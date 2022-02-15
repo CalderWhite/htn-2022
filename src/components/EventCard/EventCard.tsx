@@ -29,12 +29,13 @@ export const EventCard = (props) => {
             justifyContent="flex-start"
             alignItems="flex-start"
           >
-            <p>Speakers: </p>
+            <p>Speakers:
             {
               props.speakers.map(({name}) => (
-                <p>{name}</p>
+                <span> {name} </span>
               ))
             }
+            </p>
         </Grid>
         }
         <Grid item md={12} xs={12} spacing={0}>
