@@ -7,7 +7,8 @@ import './App.css';
 
 function App() {
   const [eventData, setEventData] = useState([])
-  const [loginOpen, setLoginOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   let compareEvents = (event1, event2) => 
     (event1.start_time > event2.start_time) ? 1 : -1;
@@ -24,13 +25,18 @@ function App() {
         {eventData.map(data => (
           <EventCard
             {...data}
-            openLogin={() => setLoginOpen(true)}
+            openLogin={() => setShowLogin(true)}
+            loggedIn={loggedIn}
             key={data.id}
             />
         ))}
 
       </ul>
-      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
+      <LoginModal 
+        open={showLogin}
+        onClose={() => setShowLogin(false)}
+        login={() => setLoggedIn(true)}
+      />
     </div>
   );
 }

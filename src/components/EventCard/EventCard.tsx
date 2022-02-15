@@ -8,11 +8,13 @@ import "./styles.scss";
 export const EventCard = (props) => {
   const startDate = new Date(props.start_time);
   const endDate = new Date(props.end_time);
+
   const isPrivateEvent = props.permission == 'private';
+  const isHidden = (isPrivateEvent && !props.loggedIn);
 
   return (
     <li className={`event-card event-${props.event_type}`}>
-      <Grid container spacing={1} className={isPrivateEvent ? 'blur' : ''}>
+      <Grid container spacing={1} className={isHidden ? 'blur' : ''}>
         <Grid item md={12} xs={12}>
           <p>
             {props.name}
@@ -46,7 +48,7 @@ export const EventCard = (props) => {
         </Grid>
       </Grid>
 
-      {isPrivateEvent && <LoginCard openLogin={props.openLogin} />}
+      { isHidden && <LoginCard openLogin={props.openLogin} />}
     </li>
   );
 }
