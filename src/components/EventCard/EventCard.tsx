@@ -6,14 +6,39 @@ import Grid from "@mui/material/Grid";
 import "./styles.scss";
 
 export const EventCard = (props) => {
+  let startDate = new Date(props.start_time);
+  let endDate = new Date(props.end_time);
+  console.log(props.speakers)
   return (
     <li className={`event-card event-${props.event_type}`}>
-      <Grid container spacing={2}>
-        <Grid item md={12} xs={12}>
-          <p> {props.name} </p>
-        </Grid>
+      <Grid container spacing={1}>
         <Grid item md={12} xs={12}>
           <p>
+            {props.name}
+            <span className="time-str">
+              (Starts: {startDate.toDateString()}, {startDate.toLocaleTimeString()})
+            </span>
+          </p>
+        </Grid>
+        {
+          (props.speakers.length > 0) && 
+          <Grid 
+            item md={12} xs={12} 
+            className="speakers-list"
+            display="flex"
+            justifyContent="flex-start"
+            alignItems="flex-start"
+          >
+            <p>Speakers: </p>
+            {
+              props.speakers.map(({name}) => (
+                <p>{name}</p>
+              ))
+            }
+        </Grid>
+        }
+        <Grid item md={12} xs={12} spacing={0}>
+          <p className="description">
             {props.description}
           </p>
         </Grid>

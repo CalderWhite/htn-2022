@@ -1,9 +1,9 @@
 $color-primary: #08415C;
 $color-secondary: #EEE5E9;
 
-$color-event-primary: #A1D083;
-$color-event-secondary: #3B97D4;
-$color-event-tertiary: #DC6BAD;
+$color-event-primary: #bddea8;
+$color-event-secondary: #9fe3ff;
+$color-event-tertiary: #e48b9f;
 
 body {
   background: $color-secondary;
@@ -24,16 +24,32 @@ body {
 .event-card {
   display: block;
   padding: 20px;
-  margin: 15px;
   border-radius: 25px;
-  overflow: hidden;
+  margin: 15px;
   margin-left: 0;
   margin-right: 0;
   color: $color-primary;
   font-weight: 400;
+
   p {
     margin: 0;
     margin-right: "5px";
+    .time-str {
+      font-size: 0.8rem;
+      padding-left: 0.3rem;
+    }
+  }
+  
+  p.description {
+    font-size: 0.9rem;
+  }
+
+  .speakers-list {
+    margin-top: -8px;
+    p {
+      display: inline-block;
+      font-size: 0.9rem;
+    }
   }
 }
 
