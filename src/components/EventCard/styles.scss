@@ -8,7 +8,7 @@ $color-event-tertiary: #e48b9f;
 body {
   background: $color-secondary;
   font-size: 1.3rem;
-  font-family: Arial,sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
 .event-workshop {
@@ -30,6 +30,8 @@ body {
   margin-right: 0;
   color: $color-primary;
   font-weight: 400;
+  /* This is important so that I can position the child login element with absolute. */
+  position: relative;
 
   p {
     margin: 0;
@@ -53,13 +55,47 @@ body {
   }
 }
 
+.blur {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+
+  min-height: 200px;
+}
+
 .table-wrapper {
   margin: auto;
   padding-left: 0;
   max-width: 800px;
 }
 
-#shuffle {
-  /* This is pretty hackey */
-  margin-top: -20px;
+.login-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin-bottom: 5px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 35px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    .css-sghohy-MuiButtonBase-root-MuiButton-root {
+      background: #08415C;
+    }
+  }
 }

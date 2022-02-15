@@ -1,17 +1,18 @@
 import React from "react";
-import Button from '@mui/material/Button';
 import Grid from "@mui/material/Grid";
-//import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+
+import { LoginCard } from "./LoginCard.tsx";
 
 import "./styles.scss";
 
 export const EventCard = (props) => {
-  let startDate = new Date(props.start_time);
-  let endDate = new Date(props.end_time);
-  console.log(props.speakers)
+  const startDate = new Date(props.start_time);
+  const endDate = new Date(props.end_time);
+  const isPrivateEvent = props.permission == 'private';
+
   return (
     <li className={`event-card event-${props.event_type}`}>
-      <Grid container spacing={1}>
+      <Grid container spacing={1} className={isPrivateEvent ? 'blur' : ''}>
         <Grid item md={12} xs={12}>
           <p>
             {props.name}
@@ -32,18 +33,20 @@ export const EventCard = (props) => {
             <p>Speakers:
             {
               props.speakers.map(({name}) => (
-                <span> {name} </span>
+                <span key={name}> {name} </span>
               ))
             }
             </p>
         </Grid>
         }
-        <Grid item md={12} xs={12} spacing={0}>
+        <Grid item md={12} xs={12}>
           <p className="description">
             {props.description}
           </p>
         </Grid>
       </Grid>
+
+      {isPrivateEvent && <LoginCard openLogin={props.openLogin} />}
     </li>
   );
 }
