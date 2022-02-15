@@ -53,6 +53,22 @@ body {
       font-size: 0.9rem;
     }
   }
+
+  .related-events {
+    ul {
+      list-style-type: none;
+      padding-left: 1rem;
+    }
+    p, a {
+      font-size: 0.9rem;
+    }
+    a {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .blur {

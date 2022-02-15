@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
+import {Grid, Link } from "@mui/material";
 
 import { LoginCard } from "./LoginCard.tsx";
 
@@ -13,7 +13,7 @@ export const EventCard = (props) => {
   const isHidden = (isPrivateEvent && !props.loggedIn);
 
   return (
-    <li className={`event-card event-${props.event_type}`}>
+    <li id={`event-${props.id}`} className={`event-card event-${props.event_type}`}>
       <Grid container spacing={1} className={isHidden ? 'blur' : ''}>
         <Grid item md={12} xs={12}>
           <p>
@@ -45,6 +45,20 @@ export const EventCard = (props) => {
           <p className="description">
             {props.description}
           </p>
+        </Grid>
+        <Grid item md={12} xs={12} className="related-events">
+          <p>
+            Related Events:
+          </p>
+          <ul>
+            {
+              props.related_events.map(eventId => (
+                <li key={eventId}>
+                  <Link href={`#event-${eventId}`}>{props.eventTitleMap[eventId]}</Link>
+                </li>
+              ))
+            }
+          </ul>
         </Grid>
       </Grid>
 
