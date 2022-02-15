@@ -1,0 +1,49 @@
+$color-primary: #08415C;
+$color-secondary: #EEE5E9;
+
+$color-event-primary: #A1D083;
+$color-event-secondary: #3B97D4;
+$color-event-tertiary: #DC6BAD;
+
+body {
+  background: $color-secondary;
+  font-size: 1.3rem;
+  font-family: Arial,sans-serif;
+}
+
+.event-workshop {
+  background: $color-event-primary;
+}
+.event-tech_talk {
+  background: $color-event-secondary;
+}
+.event-activity {
+  background: $color-event-tertiary;
+}
+
+.event-card {
+  display: block;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-left: 0;
+  margin-right: 0;
+  color: $color-primary;
+  font-weight: 400;
+  p {
+    margin: 0;
+    margin-right: "5px";
+  }
+}
+
+.table-wrapper {
+  margin: auto;
+  padding-left: 0;
+  max-width: 800px;
+}
+
+#shuffle {
+  /* This is pretty hackey */
+  margin-top: -20px;
+}
