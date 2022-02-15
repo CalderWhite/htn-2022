@@ -1,15 +1,4 @@
-$color-primary: #08415C;
-$color-secondary: #EEE5E9;
-
-$color-event-primary: #bddea8;
-$color-event-secondary: #9fe3ff;
-$color-event-tertiary: #e48b9f;
-
-body {
-  background: $color-secondary;
-  font-size: 1.3rem;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-}
+@import "../../theme";
 
 .event-workshop {
   background: $color-event-primary;
