@@ -1,5 +1,6 @@
 import React from "react";
-import {Grid, Link } from "@mui/material";
+import { Grid, Link } from "@mui/material";
+import LinkIcon from '@mui/icons-material/Link';
 
 import { LoginCard } from "./LoginCard.tsx";
 
@@ -12,15 +13,8 @@ export const EventCard = (props) => {
   const isPrivateEvent = props.permission == 'private';
   const isHidden = (isPrivateEvent && !props.loggedIn);
 
-  console.log(Number(endDate), startDate.toDateString(), endDate.toDateString())
   return (
-    <div
-      className="absolute-wrapper"
-      style={{
-        top: `${props.top}${props.topUnits}`,
-        height: `${props.height}${props.topUnits}`
-      }}
-    >
+    <div className="event-wrapper">
       <li
         id={`event-${props.id}`}
         className={`event-card event-${props.event_type}`}
@@ -29,8 +23,9 @@ export const EventCard = (props) => {
           <Grid item md={12} xs={12}>
             <p>
               {props.name}
+              <LinkIcon />
               <span className="time-str">
-                (Starts: {startDate.toDateString()}, {startDate.toLocaleTimeString()})
+                ({startDate.toLocaleTimeString()})
               </span>
             </p>
           </Grid>
@@ -78,3 +73,15 @@ export const EventCard = (props) => {
     </div>
   );
 }
+
+/*
+    <div
+      className="absolute-wrapper"
+      style={{
+        top: `${props.top}${props.topUnits}`,
+        height: `${props.height}${props.topUnits}`
+      }}
+    >
+
+    </div>
+*/

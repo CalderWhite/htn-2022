@@ -1,7 +1,9 @@
 // min duration is in milliseconds, so this is 30 minutes
 const MIN_EVENT_DURATION = 1000 * 60 * 30;
-const MIN_EVENT_HEIGHT = 400;
+const MIN_EVENT_HEIGHT = 300;
 const EVENT_HEIGHT_UNITS = "px";
+
+const DAY = 24 * 60 * 60 * 1000;
 
 export const getMinDuration = (events) => {
   let minDuration = Infinity;
@@ -61,7 +63,6 @@ export const generateColumns = (events) => {
   let minDuration = getMinDuration(events);
   let [minStart, maxEnd] = getTimelineConstraints(events);
   let totalDuration = maxEnd - minStart;
-  let totalHeight = MIN_EVENT_HEIGHT * (totalDuration / minDuration);
 
   let columns = [[]];
   events.forEach(event => {
@@ -91,4 +92,34 @@ export const generateColumns = (events) => {
   });
 
   return columns;
+}
+
+export const groupByDay = (events) => {
+  if (events.length == 0) {
+    return [];
+  }
+
+  const getDateString = (timestamp) => ((new Date(timestamp)).toDateString());
+  // we take a sorted array of events, so the first event that is not of the same day
+  // means we will never see the previous day again
+  let lastDay = getDateString(events[0].start_time);
+  let days = [{
+    dayString: lastDay,
+    events: [],
+  }]
+  for (let i = 0; i < events.length; i++) {
+    let currentDay = getDateString(events[i].start_time)
+    // add a new day if we encounter one
+    if (currentDay != lastDay) {
+      days.push({
+        dayString: currentDay,
+        events: [],
+      })
+      lastDay = currentDay;
+    }
+
+    days[days.length - 1].events.push(events[i])
+  }
+
+  return days;
 }
