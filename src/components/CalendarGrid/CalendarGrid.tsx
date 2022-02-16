@@ -16,32 +16,6 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 
 
-/**
- * We take MAX(end_time) - MIN(start_time) = hackathon duration
- * There is an "event hours" to "pixel location" mapping achieved by
- * taking the minimum event height (px) and setting it equal to the smallest event duration (event milliseconds)
- * 
- * This way the total height of the page relies on making every event visible, and not cramming them
- * into a predefined height. (The user can scroll, but they cannot change the height of divs)
- * 
- * Actual Math used to do mappings:
- * 
- * total height = (min event height) * (min event duration / total event duration)
- * So your x position is: (total height) * (start_time / event duration)
- * 
- * 
- * To Avoid overlaps, given that the event count is < ~100, I am assuming time complexity
- * isn't a huge issue. So I just search to see if there are conflict severy time I add an event
- * O(n^2).
- * 
- * 
- * TODO: Use something other than pixels to do vertical positioning so 4k devices don't have messed up positioning.
- * (Potentially use rem or em)
- */
-
-const DAY = 24 * 60 * 60 * 1000;
-
-
 export const CalendarGrid = (props) => {
   const [eventData, setEventData] = useState([]);
   const [eventTitleMap, setEventTitleMap] = useState({});
@@ -96,40 +70,33 @@ export const CalendarGrid = (props) => {
   );
 
   return (
-    <List
-      sx={{ bgcolor: "background.paper" }}
-      subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
-          Events
-        </ListSubheader>
-      }
-    >
-      {
-        groupByDay(eventData).map(({dayString, events}) => (
-          <>
-            <ListItemButton onClick={() => toggleDay(dayString)}>
-              <ListItemText primary={dayString} />
-              {dayOpen(dayString) ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={dayOpen(dayString)} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                <Grid container className="calendar-grid-container">
-                  {generateCards(events)}
-                </Grid>
-              </List>
-            </Collapse>
-          </>
-        ))
-      }
-    </List>
+    <div className="calendar-grid">
+      <List
+        sx={{ bgcolor: "background.paper" }}
+        subheader={
+          <ListSubheader component="div">
+            Events
+          </ListSubheader>
+        }
+      >
+        {
+          groupByDay(eventData).map(({dayString, events}) => (
+            <>
+              <ListItemButton onClick={() => toggleDay(dayString)}>
+                <ListItemText primary={dayString} />
+                {dayOpen(dayString) ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              <Collapse in={dayOpen(dayString)} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Grid container className="calendar-grid-container">
+                    {generateCards(events)}
+                  </Grid>
+                </List>
+              </Collapse>
+            </>
+          ))
+        }
+      </List>
+    </div>
   );
 }
-
-/*
-    <Grid container className="calendar-grid-container">
-      {
-        generateCards(eventData)
-      }
-    </Grid>
-
-*/
