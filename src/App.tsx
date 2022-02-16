@@ -4,11 +4,13 @@ import { EventCard } from "./components/EventCard";
 import { LoginModal } from "./components/LoginModal";
 
 import './App.css';
+import { CalendarGrid } from "./components/CalendarGrid";
 
 function App() {
-  const [eventData, setEventData] = useState([])
   const [showLogin, setShowLogin] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  /*
+  const [eventData, setEventData] = useState([]);
 
   const [eventTitleMap, setEventTitleMap] = useState({});
 
@@ -27,9 +29,27 @@ function App() {
         setEventTitleMap(newMap);
       });
   }, []);
+  */
 
   return (
-    <div className="table-wrapper">
+    <>
+      <CalendarGrid
+        loggedIn={loggedIn}
+        openLogin={() => setShowLogin(true)}
+      />
+      <LoginModal 
+        open={showLogin}
+        onClose={() => setShowLogin(false)}
+        login={() => setLoggedIn(true)}
+      />
+    </>
+  );
+}
+
+export default App;
+
+
+      /*
       <ul className="event-list">
         {eventData.map(data => (
           <EventCard
@@ -47,8 +67,4 @@ function App() {
         onClose={() => setShowLogin(false)}
         login={() => setLoggedIn(true)}
       />
-    </div>
-  );
-}
-
-export default App;
+      */

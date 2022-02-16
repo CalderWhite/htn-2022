@@ -1,0 +1,12 @@
+.calendar-grid-container {
+  width: 100vw;
+}
+
+.event-column {
+  position: relative;
+}
+
+/* Hijacking the style from EventCard to make it whatever we want */
+.event-card {
+  max-height: 100%;
+}
