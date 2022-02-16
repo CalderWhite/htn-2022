@@ -12,7 +12,7 @@ export const EventCard = (props) => {
   const isPrivateEvent = props.permission == 'private';
   const isHidden = (isPrivateEvent && !props.loggedIn);
 
-  console.log(props.top, props.topUnits);
+  console.log(Number(endDate), startDate.toDateString(), endDate.toDateString())
   return (
     <div
       className="absolute-wrapper"

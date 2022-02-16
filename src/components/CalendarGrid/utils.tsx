@@ -1,6 +1,6 @@
 // min duration is in milliseconds, so this is 30 minutes
 const MIN_EVENT_DURATION = 1000 * 60 * 30;
-const MIN_EVENT_HEIGHT = 50;
+const MIN_EVENT_HEIGHT = 400;
 const EVENT_HEIGHT_UNITS = "px";
 
 export const getMinDuration = (events) => {
@@ -62,10 +62,6 @@ export const generateColumns = (events) => {
   let [minStart, maxEnd] = getTimelineConstraints(events);
   let totalDuration = maxEnd - minStart;
   let totalHeight = MIN_EVENT_HEIGHT * (totalDuration / minDuration);
-  console.log("Minimum Duration:", minDuration);
-  console.log("Total Duration:", totalDuration);
-  console.log("Total Height:", totalHeight)
-  console.log("Min event height / duration", MIN_EVENT_HEIGHT, MIN_EVENT_DURATION)
 
   let columns = [[]];
   events.forEach(event => {
@@ -89,7 +85,9 @@ export const generateColumns = (events) => {
     event.height = MIN_EVENT_HEIGHT * ((event.end_time - event.start_time) / MIN_EVENT_DURATION);
     event.topUnits = EVENT_HEIGHT_UNITS;
 
-    columns[columnIndex].push(event);
+    if (event.start_time < 1638264600000) {
+      columns[columnIndex].push(event);
+    }
   });
 
   return columns;
