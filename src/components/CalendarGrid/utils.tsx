@@ -81,14 +81,12 @@ export const generateColumns = (events) => {
     }
 
     // inject the top position into the event's data
-    event.top = MIN_EVENT_HEIGHT * ((event.start_time - minStart) / MIN_EVENT_DURATION);
+    //event.top = MIN_EVENT_HEIGHT * ((event.start_time - minStart) / MIN_EVENT_DURATION);
     //event.top = event.start_time - minStart;
-    event.height = MIN_EVENT_HEIGHT * ((event.end_time - event.start_time) / MIN_EVENT_DURATION);
-    event.topUnits = EVENT_HEIGHT_UNITS;
+    //event.height = MIN_EVENT_HEIGHT * ((event.end_time - event.start_time) / MIN_EVENT_DURATION);
+    //event.topUnits = EVENT_HEIGHT_UNITS;
 
-    if (event.start_time < 1638264600000) {
-      columns[columnIndex].push(event);
-    }
+    columns[columnIndex].push(event);
   });
 
   return columns;
@@ -109,6 +107,8 @@ export const groupByDay = (events) => {
   }]
   for (let i = 0; i < events.length; i++) {
     let currentDay = getDateString(events[i].start_time)
+    console.log(currentDay, events[i].name)
+    console.log(JSON.stringify(events[i]))
     // add a new day if we encounter one
     if (currentDay != lastDay) {
       days.push({

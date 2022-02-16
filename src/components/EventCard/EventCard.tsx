@@ -12,6 +12,7 @@ export const EventCard = (props) => {
 
   const isPrivateEvent = props.permission == 'private';
   const isHidden = (isPrivateEvent && !props.loggedIn);
+  console.log(props.name)
 
   return (
     <div className="event-wrapper">
@@ -23,7 +24,7 @@ export const EventCard = (props) => {
           <Grid item md={12} xs={12}>
             <p>
               {props.name}
-              <LinkIcon />
+              <Link href={props.public_url} target="_"><LinkIcon /></Link>
               <span className="time-str">
                 ({startDate.toLocaleTimeString()})
               </span>

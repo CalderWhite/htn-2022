@@ -78,7 +78,7 @@ export const CalendarGrid = (props) => {
 
   const generateCards = (data) => (
     generateColumns(data).map(events => (
-      <Grid item className="event-column" md={4} xs={4} >
+      <Grid item className="event-column" md={4} xs={12} >
         {
           events.map(event => (
             <EventCard 
@@ -97,7 +97,7 @@ export const CalendarGrid = (props) => {
 
   return (
     <List
-      sx={{ width: "100%", bgcolor: "background.paper" }}
+      sx={{ bgcolor: "background.paper" }}
       subheader={
         <ListSubheader component="div" id="nested-list-subheader">
           Events
