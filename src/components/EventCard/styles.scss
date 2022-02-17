@@ -71,7 +71,7 @@
 
       li {
         position: relative;
-        height: 0.7rem;
+        height: 0.9rem;
         a {
           text-decoration: none;
           position: absolute;
@@ -124,6 +124,7 @@
     padding: 35px;
     padding-left: 40px;
     padding-right: 40px;
+    font-weight: 500;
   }
 }
 
@@ -137,7 +138,6 @@
 }
 
 .profile-card {
-  border: 0.5px solid black;
   border-radius: 10px;
   background: white;
   display: inline-block;

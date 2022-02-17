@@ -20,8 +20,16 @@ function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
+  const myTheme = createTheme({
+    palette: {
+      primary: {
+        main: "#79599c"
+      }
+    }
+  })
+
   return (
-    <>
+    <ThemeProvider theme={myTheme}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -48,7 +56,7 @@ function App() {
         onClose={() => setShowLogin(false)}
         login={() => setLoggedIn(true)}
       />
-    </>
+    </ThemeProvider>
   );
 }
 
