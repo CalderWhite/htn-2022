@@ -1,5 +1,25 @@
 # Hack the North Frontend Challenge 2022
 
+### Building
+
+To build & view:
+```
+npm install
+npm run build
+
+serve build
+```
+
+### Development
+
+To edit with live refreshing:
+
+```
+npm install
+npm run start
+```
+
+
 ### 1. Walk us through your development process as you worked on this project. How did you plan out the structure and design of it? How did decide on the tools you've used? Did you encounter any problems? And if so, how did you solve them? Are there any areas of your code that you're particularly proud of or want to point out?
 
 #### How did you plan out the structure and design of it?
