@@ -1,5 +1,26 @@
 # Hack the North Frontend Challenge 2022
 
+### Building
+
+To build & view:
+```
+npm install
+npm run build
+
+npm install -g serve
+serve -s build
+```
+
+### Development
+
+To edit with live refreshing:
+
+```
+npm install
+npm run start
+```
+
+
 ### 1. Walk us through your development process as you worked on this project. How did you plan out the structure and design of it? How did decide on the tools you've used? Did you encounter any problems? And if so, how did you solve them? Are there any areas of your code that you're particularly proud of or want to point out?
 
 #### How did you plan out the structure and design of it?
@@ -7,6 +28,10 @@
 
 For my development process I always start with laying out an MVP and thinking about what is most critical to the user. For this project I assessed a linear display of sorted events to be the most critical. Without the sorted list of events, users will have a hard time finding the events they want and keeping up to date with what events have already happened and which events are coming up. Pictures, buttons, fancy scrolling, and the rest could come later.
 After determining the set of features that were the absolute minimum, I cut tickets on a Trello board so I could track my progress and time box features/bugs that were taking too long. This had the added benefit of allowing me to record feature ideas and bugs as I was building the MVP and putting them in the TODO column. This way when I was done with the MVP I had a prioritized list of what to do next.
+
+The resulting MVP:
+![out](https://user-images.githubusercontent.com/15067287/154404920-e422a80a-b954-484c-83d6-0acee9d5954b.png)
+
 
 #### How did decide on the tools you've used? 
 
@@ -26,12 +51,18 @@ There are a few areas I am particularly proud of. First off, I am proud of the e
  
 I am also proud of the ability to collapse days and query by event type. I think this takes the project farther from a proof of concept and closer to a functional application that users can garner real value from. This is especially relevant to the Hack the North Gear Up event for example, as the same project can be used for that event and the main hackathon.
  
-<GIF>
+ Collapsing by day:
+![htn_group](https://user-images.githubusercontent.com/15067287/154404632-77a0916c-e87f-46da-ac26-7b89299cece7.gif)
+
+Filtering by event type:
+![htn_filter](https://user-images.githubusercontent.com/15067287/154404665-31079439-d679-4ef9-8418-f3973ec6045a.gif)
+
  
 The final thing I am proud of is my login wall for private events. I took inspiration from applications such as private youtube videos or Netflix and tried to implement an intuitive design that communicated to users that they would need to sign in to view those events. This way I can try and minimize user documentation and work off a user's existing knowledge/expectations from other web applications.
-
-<GIF>
  
+![htn_login](https://user-images.githubusercontent.com/15067287/154404453-736fb96a-244e-4598-92eb-7dd167688667.gif)
+
+
 ### 2. Given additional time, how would you extend your application to become a fully functional product that thousands of hackers and the general public would use at Hackathon Global Inc.™'s next event? Would you add more features and performance metrics? If so, what would they be?
 
  I was given more time to work on this I definitely would have added querying by text. It's not that I couldn't do it, but it just didn't make the cut for me in terms of timing since I wanted to focus on what was most critical to users. In a large-scale application such as Hack the North’s real calendar application there are tons of events and at that point, I see real value in being able to search up an event easily so I would implement that to improve the UX. Additionally, I would implement the more Google Calendar style UI that I mentioned in question 1. I had a go at it, but there were just too many edge cases to fit it all into this project. However, I feel like this is the most intuitive way for users to interact with a calendar and that it would be well worth the effort when 3000 people are going to be visiting this page multiple times. 
