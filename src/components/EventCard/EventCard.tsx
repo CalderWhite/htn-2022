@@ -7,6 +7,7 @@ import dateFormat from "dateformat";
 import { LoginCard } from "./LoginCard.tsx";
 import { WatchCard } from "./WatchCard.tsx";
 import { HopinCard } from "./HopinCard.tsx";
+import { ProfileCard } from "./ProfileCard.tsx";
 
 import "./styles.scss";
 
@@ -29,7 +30,7 @@ export const EventCard = (props) => {
       >
         <Grid container spacing={1} className={isHidden ? 'blur' : ''}>
           <Grid item md={12} xs={12}>
-            <p>
+            <p className="header">
               {props.name}
               <nobr>
               <span className="time-str">
@@ -39,27 +40,20 @@ export const EventCard = (props) => {
             </p>
           </Grid>
           <Grid item md={12} xs={12}>
+            <div style={{display: "flex", alignItems: "center"}} >
+            <>
+            {
+              (props.speakers.length > 0) && (
+                props.speakers.map(({name, profile_pic}) => (
+                  <ProfileCard key={name} name={name} src={profile_pic} />
+                ))
+              )
+            }
+            </>
             {props.public_url != "" && <WatchCard href={props.public_url} />}
             {(isPrivateEvent && !isHidden) && <HopinCard href={props.private_url} />}
+            </div>
           </Grid>
-          {
-            (props.speakers.length > 0) && 
-            <Grid 
-              item md={12} xs={12} 
-              className="speakers-list"
-              display="flex"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-            >
-              <p>Speakers:
-              {
-                props.speakers.map(({name}) => (
-                  <span key={name}> {name} </span>
-                ))
-              }
-              </p>
-          </Grid>
-          }
           <Grid item md={12} xs={12}>
             <p className="description">
               {props.description}

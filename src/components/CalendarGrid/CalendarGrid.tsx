@@ -52,7 +52,7 @@ export const CalendarGrid = (props) => {
 
   const generateCards = (data) => (
     generateColumns(data).map(events => (
-      <Grid item className="event-column" md={4} sm={6} xs={12} >
+      <Grid item className="event-column" md={6} sm={6} xs={12} >
         {
           events.map(event => (
             <EventCard 

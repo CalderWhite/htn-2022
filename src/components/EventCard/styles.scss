@@ -35,16 +35,22 @@
 
   p {
     margin: 0;
-    margin-right: "5px";
-    font-size: 1rem;
     .time-str {
       font-size: 1rem;
       padding-left: 0.3rem;
     }
   }
+
+  p.header {
+    margin-right: "5px";
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
   
   p.description {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #444444;
   }
 
   .speakers-list {
@@ -127,4 +133,13 @@
   background: white;
   border-radius: 5px;
   border: 0px;
+}
+
+.profile-card {
+  border: 0.5px solid black;
+  border-radius: 10px;
+  background: white;
+  display: inline-block;
+  float: left;
+  margin: 5px;
 }
