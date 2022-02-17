@@ -73,7 +73,15 @@ export const EventCard = (props) => {
               {
                 props.related_events.map(eventId => (
                   <li key={eventId}>
-                    <Link href={`#event-${eventId}`} color="#0072E5" >{props.eventTitleMap[eventId]}</Link>
+                    <Link
+                      onClick={() => {
+                        props.openAll();
+                        window.location.href=`#event-${eventId}`;
+                      }}
+                      color="#0072E5"
+                    >
+                      {props.eventTitleMap[eventId]}
+                    </Link>
                   </li>
                 ))
               }

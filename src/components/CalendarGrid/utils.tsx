@@ -58,7 +58,7 @@ export const hasConflict = (column, event) => {
  * 
  */
 
-export const generateColumns = (events) => {
+const generateColumns = (events) => {
   let minDuration = getMinDuration(events);
   let [minStart, maxEnd] = getTimelineConstraints(events);
   let totalDuration = maxEnd - minStart;
@@ -89,6 +89,24 @@ export const generateColumns = (events) => {
   });
 
   return columns;
+}
+
+export const groupByStart = (events) => {
+  let groups = {};
+  events.forEach(event => {
+    if (groups[event.start_time] === undefined) {
+      groups[event.start_time] = [];
+    }
+    groups[event.start_time].push(event);
+  })
+
+  let sortedGroups = []
+  let keys = Object.keys(groups).sort();
+  for (let i = 0; i < keys.length; i++) {
+    sortedGroups.push(groups[keys[i]]);
+  }
+
+  return sortedGroups;
 }
 
 export const groupByDay = (events) => {

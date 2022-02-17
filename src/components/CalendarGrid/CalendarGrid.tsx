@@ -3,7 +3,7 @@ import { Button, FormControlLabel, Card, Checkbox, Grid } from "@mui/material";
 
 import { EventCard } from "../EventCard";
 
-import { groupByDay, generateColumns } from "./utils.tsx";
+import { groupByDay, groupByStart } from "./utils.tsx";
 
 import "./styles.scss";
 
@@ -57,19 +57,20 @@ export const CalendarGrid = (props) => {
   }, []);
 
   const generateCards = (data) => (
-    generateColumns(data).map(events => (
-      <Grid item className="event-column" md={6} sm={6} xs={12} >
+    groupByStart(data).map(events => (
+      <Grid container key={events[0].start_time}>
         {
           events.map(event => (
-            <EventCard 
-              {...event}
-              openLogin={props.openLogin}
-              loggedIn={props.loggedIn}
-              eventTitleMap={eventTitleMap}
-              eventShownMap={eventShownMap}
-
-              key={event.id}
-            />
+            <Grid item className="event-column" md={6} sm={6} xs={12} key={event.id}>
+              <EventCard 
+                {...event}
+                openLogin={props.openLogin}
+                loggedIn={props.loggedIn}
+                eventTitleMap={eventTitleMap}
+                eventShownMap={eventShownMap}
+                openAll={openAllDays}
+              />
+            </Grid>
           ))
         }
       </Grid>
@@ -112,6 +113,7 @@ export const CalendarGrid = (props) => {
         {
           Object.keys(eventShownMap).map(event_type => (
             <FormControlLabel
+              key={event_type}
               control={
                 <Checkbox
                   onChange={() => {
@@ -134,8 +136,10 @@ export const CalendarGrid = (props) => {
             />
           ))
         }
-        <Button variant="contained" sx={{m: 2}} onClick={openAllDays}>Open All Days</Button>
-        <Button variant="contained" sx={{m: 2}} onClick={closeAllDays}>Close All Days</Button>
+        <nobr>
+          <Button variant="contained" sx={{m: 2}} onClick={openAllDays}>Open All Days</Button>
+          <Button variant="contained" sx={{m: 2}} onClick={closeAllDays}>Close All Days</Button>
+        </nobr>
       </Card>
       <List
         sx={{ bgcolor: "background.paper" }}
