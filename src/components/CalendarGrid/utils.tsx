@@ -12,7 +12,6 @@ export const getMinDuration = (events) => {
     if (duration < minDuration) {
       minDuration = duration;
     }
-    console.log(duration);
   });
 
   return minDuration
@@ -107,8 +106,6 @@ export const groupByDay = (events) => {
   }]
   for (let i = 0; i < events.length; i++) {
     let currentDay = getDateString(events[i].start_time)
-    console.log(currentDay, events[i].name)
-    console.log(JSON.stringify(events[i]))
     // add a new day if we encounter one
     if (currentDay != lastDay) {
       days.push({

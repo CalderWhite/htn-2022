@@ -36,6 +36,7 @@
   p {
     margin: 0;
     margin-right: "5px";
+    font-size: 1rem;
     .time-str {
       font-size: 1rem;
       padding-left: 0.3rem;
@@ -50,7 +51,7 @@
     margin-top: -8px;
     p {
       display: inline-block;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -117,4 +118,13 @@
     padding-left: 40px;
     padding-right: 40px;
   }
+}
+
+.watch-card {
+  margin-bottom: 5px;
+  float: left;
+  margin-right: 5px;
+  background: white;
+  border-radius: 5px;
+  border: 0px;
 }

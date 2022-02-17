@@ -27,14 +27,14 @@ export const CalendarGrid = (props) => {
     let copy = {};
     Object.assign(copy, openMap)
     if (copy[day] == undefined) {
-      copy[day] = true;
+      copy[day] = false;
     } else {
       copy[day] = !copy[day];
     }
     setOpenMap(copy);
   }
   const dayOpen = (day) => {
-    return openMap[day] === true;
+    return openMap[day] === true || openMap[day] === undefined;
   }
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export const CalendarGrid = (props) => {
 
   const generateCards = (data) => (
     generateColumns(data).map(events => (
-      <Grid item className="event-column" md={4} xs={12} >
+      <Grid item className="event-column" md={4} sm={6} xs={12} >
         {
           events.map(event => (
             <EventCard 
@@ -81,7 +81,7 @@ export const CalendarGrid = (props) => {
       >
         {
           groupByDay(eventData).map(({dayString, events}) => (
-            <>
+            <div key={`${dayString}`}>
               <ListItemButton onClick={() => toggleDay(dayString)}>
                 <ListItemText primary={dayString} />
                 {dayOpen(dayString) ? <ExpandLess /> : <ExpandMore />}
@@ -93,7 +93,7 @@ export const CalendarGrid = (props) => {
                   </Grid>
                 </List>
               </Collapse>
-            </>
+            </div>
           ))
         }
       </List>

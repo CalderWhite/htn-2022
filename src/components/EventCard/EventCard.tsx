@@ -1,8 +1,12 @@
 import React from "react";
 import { Grid, Link } from "@mui/material";
 import LinkIcon from '@mui/icons-material/Link';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
+import dateFormat from "dateformat";
 
 import { LoginCard } from "./LoginCard.tsx";
+import { WatchCard } from "./WatchCard.tsx";
+import { HopinCard } from "./HopinCard.tsx";
 
 import "./styles.scss";
 
@@ -12,7 +16,10 @@ export const EventCard = (props) => {
 
   const isPrivateEvent = props.permission == 'private';
   const isHidden = (isPrivateEvent && !props.loggedIn);
-  console.log(props.name)
+
+  const HOUR = 60 * 60 * 1000;
+  const duration = (props.end_time - props.start_time) / HOUR;
+  const durationString = duration < 1 ? `${60 * duration}m` : `${duration}h`;
 
   return (
     <div className="event-wrapper">
@@ -24,11 +31,16 @@ export const EventCard = (props) => {
           <Grid item md={12} xs={12}>
             <p>
               {props.name}
-              <Link href={props.public_url} target="_"><LinkIcon /></Link>
+              <nobr>
               <span className="time-str">
-                ({startDate.toLocaleTimeString()})
+                ({dateFormat(startDate, 'h:MM TT')}, {durationString})
               </span>
+              </nobr>
             </p>
+          </Grid>
+          <Grid item md={12} xs={12}>
+            {props.public_url != "" && <WatchCard href={props.public_url} />}
+            {(isPrivateEvent && !isHidden) && <HopinCard href={props.private_url} />}
           </Grid>
           {
             (props.speakers.length > 0) && 
@@ -61,7 +73,7 @@ export const EventCard = (props) => {
               {
                 props.related_events.map(eventId => (
                   <li key={eventId}>
-                    <Link href={`#event-${eventId}`} color="#E33E7F" >{props.eventTitleMap[eventId]}</Link>
+                    <Link href={`#event-${eventId}`} color="#0072E5" >{props.eventTitleMap[eventId]}</Link>
                   </li>
                 ))
               }
@@ -74,15 +86,3 @@ export const EventCard = (props) => {
     </div>
   );
 }
-
-/*
-    <div
-      className="absolute-wrapper"
-      style={{
-        top: `${props.top}${props.topUnits}`,
-        height: `${props.height}${props.topUnits}`
-      }}
-    >
-
-    </div>
-*/

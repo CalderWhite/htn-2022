@@ -42,19 +42,8 @@ function App() {
   }, []);
   */
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#08415C'
-      },
-      secondary: {
-        main: '#E33E7F'
-      }
-    }
-  });
-
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -80,7 +69,7 @@ function App() {
         onClose={() => setShowLogin(false)}
         login={() => setLoggedIn(true)}
       />
-    </ThemeProvider>
+    </>
   );
 }
 
