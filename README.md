@@ -25,13 +25,16 @@ There are a few areas I am particularly proud of. First off, I am proud of the e
 <GIF>
  
 I am also proud of the ability to collapse days and query by event type. I think this takes the project farther from a proof of concept and closer to a functional application that users can garner real value from. This is especially relevant to the Hack the North Gear Up event for example, as the same project can be used for that event and the main hackathon.
- 
-<GIF>
+ ![htn_collapse](https://user-images.githubusercontent.com/15067287/154403522-afc0ad73-5609-4998-941b-88c2eef9503f.gif)
+
+![htn_filter](https://user-images.githubusercontent.com/15067287/154403529-de74059f-cded-4dee-93e2-3151a3f27802.gif)
+
  
 The final thing I am proud of is my login wall for private events. I took inspiration from applications such as private youtube videos or Netflix and tried to implement an intuitive design that communicated to users that they would need to sign in to view those events. This way I can try and minimize user documentation and work off a user's existing knowledge/expectations from other web applications.
-
-<GIF>
  
+![htn_login](https://user-images.githubusercontent.com/15067287/154403830-22d4d8b8-a619-4c45-8ad4-4aed7b27143a.gif)
+
+
 ### 2. Given additional time, how would you extend your application to become a fully functional product that thousands of hackers and the general public would use at Hackathon Global Inc.™'s next event? Would you add more features and performance metrics? If so, what would they be?
 
  I was given more time to work on this I definitely would have added querying by text. It's not that I couldn't do it, but it just didn't make the cut for me in terms of timing since I wanted to focus on what was most critical to users. In a large-scale application such as Hack the North’s real calendar application there are tons of events and at that point, I see real value in being able to search up an event easily so I would implement that to improve the UX. Additionally, I would implement the more Google Calendar style UI that I mentioned in question 1. I had a go at it, but there were just too many edge cases to fit it all into this project. However, I feel like this is the most intuitive way for users to interact with a calendar and that it would be well worth the effort when 3000 people are going to be visiting this page multiple times. 
