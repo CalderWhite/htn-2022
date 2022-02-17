@@ -6,9 +6,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 
-import { ThemeProvider, createTheme } from '@mui/material';
+import { Card, Checkbox, ThemeProvider, createTheme } from '@mui/material';
 
 
 import { EventCard } from "./components/EventCard";
@@ -39,6 +38,7 @@ function App() {
           <Button color="inherit" onClick={() => setShowLogin(true)}>Login</Button>
         </Toolbar>
       </AppBar>
+
       <CalendarGrid
         loggedIn={loggedIn}
         openLogin={() => setShowLogin(true)}

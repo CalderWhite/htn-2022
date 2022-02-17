@@ -22,6 +22,12 @@ export const EventCard = (props) => {
   const duration = (props.end_time - props.start_time) / HOUR;
   const durationString = duration < 1 ? `${60 * duration}m` : `${duration}h`;
 
+  if (!props.eventShownMap[props.event_type]) {
+    return (
+      <></>
+    );
+  }
+
   return (
     <div className="event-wrapper">
       <li

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "@mui/material";
+import { Button, FormControlLabel, Card, Checkbox, Grid } from "@mui/material";
 
 import { EventCard } from "../EventCard";
 
@@ -37,16 +37,22 @@ export const CalendarGrid = (props) => {
     return openMap[day] === true || openMap[day] === undefined;
   }
 
+
+  const [eventShownMap, setEventShownMap] = React.useState({});
+
   useEffect(() => {
     fetch('https://api.hackthenorth.com/v3/events')
       .then(response => response.json())
       .then(data => {
         setEventData(data.sort(compareEvents));
         let newMap = {};
-        data.forEach(({id, name}) => {
+        let newEventShownMap = {};
+        data.forEach(({id, name, event_type}) => {
           newMap[id] = name;
+          newEventShownMap[event_type] = true;
         });
         setEventTitleMap(newMap);
+        setEventShownMap(newEventShownMap);
       });
   }, []);
 
@@ -60,6 +66,7 @@ export const CalendarGrid = (props) => {
               openLogin={props.openLogin}
               loggedIn={props.loggedIn}
               eventTitleMap={eventTitleMap}
+              eventShownMap={eventShownMap}
 
               key={event.id}
             />
@@ -69,8 +76,67 @@ export const CalendarGrid = (props) => {
     ))
   );
 
+  const eventTypeLabels = {
+    "tech_talk": "Tech Talk",
+    "workshop": "Workshop",
+    "activity": "Activity"
+  }
+
+  const openAllDays = () => {
+    let obj = {}
+    groupByDay(eventData).forEach(({dayString}) => {
+      obj[dayString] = true;
+    });
+    setOpenMap(obj);
+  }
+  const closeAllDays = () => {
+    let obj = {}
+    groupByDay(eventData).forEach(({dayString}) => {
+      obj[dayString] = false;
+    });
+    setOpenMap(obj);
+  }
+
   return (
     <div className="calendar-grid">
+      <Card
+        style={{
+          borderRadius: 0,
+          border: "none",
+          boxShadow: "none"
+        }}
+        sx={{
+          p: 2.5
+        }}
+      >
+        {
+          Object.keys(eventShownMap).map(event_type => (
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={() => {
+                    let copy = {};
+                    Object.assign(copy, eventShownMap);
+                    copy[event_type] = !copy[event_type];
+                    setEventShownMap(copy);
+                  }}
+                  defaultChecked
+              />}
+              label={eventTypeLabels[event_type]}
+              sx={{
+                p: 1.5
+              }}
+              style={{
+                borderRadius: "10px",
+                paddingLeft: "5px"
+              }}
+              className={`event-${event_type}`}
+            />
+          ))
+        }
+        <Button variant="contained" sx={{m: 2}} onClick={openAllDays}>Open All Days</Button>
+        <Button variant="contained" sx={{m: 2}} onClick={closeAllDays}>Close All Days</Button>
+      </Card>
       <List
         sx={{ bgcolor: "background.paper" }}
         subheader={
