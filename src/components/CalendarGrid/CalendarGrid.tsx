@@ -26,7 +26,7 @@ export const CalendarGrid = (props) => {
   const toggleDay = (day) => {
     let copy = {};
     Object.assign(copy, openMap)
-    if (copy[day] == undefined) {
+    if (copy[day] === undefined) {
       copy[day] = false;
     } else {
       copy[day] = !copy[day];

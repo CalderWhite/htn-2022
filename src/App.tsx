@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 
-import { Card, Checkbox, ThemeProvider, createTheme } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material';
 
-
-import { EventCard } from "./components/EventCard";
 import { LoginModal } from "./components/LoginModal";
-
 import './App.css';
 import { CalendarGrid } from "./components/CalendarGrid";
 

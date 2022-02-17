@@ -1,10 +1,3 @@
-// min duration is in milliseconds, so this is 30 minutes
-const MIN_EVENT_DURATION = 1000 * 60 * 30;
-const MIN_EVENT_HEIGHT = 300;
-const EVENT_HEIGHT_UNITS = "px";
-
-const DAY = 24 * 60 * 60 * 1000;
-
 export const getMinDuration = (events) => {
   let minDuration = Infinity;
   events.forEach(({start_time, end_time}) => {
@@ -19,7 +12,7 @@ export const getMinDuration = (events) => {
 
 export const getTimelineConstraints = (events) => {
   // guard against erroring out on empty events
-  if (events.length == 0) {
+  if (events.length === 0) {
     return [-1, -1];
   }
 
@@ -51,46 +44,6 @@ export const hasConflict = (column, event) => {
   return hasConflict;
 }
 
-/**
- * 
- * total height = (min event height) * (total event duration / min event duration)
- * So your x position is: (min event height) * (start_time / min event duration)
- * 
- */
-
-const generateColumns = (events) => {
-  let minDuration = getMinDuration(events);
-  let [minStart, maxEnd] = getTimelineConstraints(events);
-  let totalDuration = maxEnd - minStart;
-
-  let columns = [[]];
-  events.forEach(event => {
-    let columnIndex = -1;
-    for (let i = 0; i < columns.length; i++) {
-      if (!hasConflict(columns[i], event)) {
-        columnIndex = i;
-        break;
-      }
-    }
-
-    // could not find a column without conflicts, create a new one
-    if (columnIndex == -1) {
-      columns.push([])
-      columnIndex = columns.length - 1;
-    }
-
-    // inject the top position into the event's data
-    //event.top = MIN_EVENT_HEIGHT * ((event.start_time - minStart) / MIN_EVENT_DURATION);
-    //event.top = event.start_time - minStart;
-    //event.height = MIN_EVENT_HEIGHT * ((event.end_time - event.start_time) / MIN_EVENT_DURATION);
-    //event.topUnits = EVENT_HEIGHT_UNITS;
-
-    columns[columnIndex].push(event);
-  });
-
-  return columns;
-}
-
 export const groupByStart = (events) => {
   let groups = {};
   events.forEach(event => {
@@ -110,7 +63,7 @@ export const groupByStart = (events) => {
 }
 
 export const groupByDay = (events) => {
-  if (events.length == 0) {
+  if (events.length === 0) {
     return [];
   }
 
@@ -125,7 +78,7 @@ export const groupByDay = (events) => {
   for (let i = 0; i < events.length; i++) {
     let currentDay = getDateString(events[i].start_time)
     // add a new day if we encounter one
-    if (currentDay != lastDay) {
+    if (currentDay !== lastDay) {
       days.push({
         dayString: currentDay,
         events: [],

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Button } from "@mui/material";
-import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export const HopinCard = (props) => {

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { CardHeader, Avatar, Button } from "@mui/material";
+import { CardHeader, Avatar } from "@mui/material";
 
 export const ProfileCard = (props) => (
   <div className="profile-card">

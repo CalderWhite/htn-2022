@@ -1,7 +1,5 @@
 import React from "react";
 import { Grid, Link } from "@mui/material";
-import LinkIcon from '@mui/icons-material/Link';
-import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import dateFormat from "dateformat";
 
 import { LoginCard } from "./LoginCard.tsx";
@@ -13,9 +11,8 @@ import "./styles.scss";
 
 export const EventCard = (props) => {
   const startDate = new Date(props.start_time);
-  const endDate = new Date(props.end_time);
 
-  const isPrivateEvent = props.permission == 'private';
+  const isPrivateEvent = props.permission === 'private';
   const isHidden = (isPrivateEvent && !props.loggedIn);
 
   const HOUR = 60 * 60 * 1000;
@@ -56,7 +53,7 @@ export const EventCard = (props) => {
               )
             }
             </>
-            {props.public_url != "" && <WatchCard href={props.public_url} />}
+            {props.public_url !== "" && <WatchCard href={props.public_url} />}
             {(isPrivateEvent && !isHidden) && <HopinCard href={props.private_url} />}
             </div>
           </Grid>

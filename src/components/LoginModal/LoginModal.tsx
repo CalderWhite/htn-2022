@@ -8,7 +8,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export const LoginModal = (props) => {
-  const [open, setOpen] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [email, setEmail] = useState("");
@@ -22,9 +21,9 @@ export const LoginModal = (props) => {
           setPasswordError("");
           e.preventDefault()
 
-          if (email != "calderwhite1@gmail.com") {
+          if (email !== "calderwhite1@gmail.com") {
             setEmailError("No user with this email exists!");
-          } else if (password != "badpassword") {
+          } else if (password !== "badpassword") {
             setPasswordError("Incorrect Password");
           } else {
             // successful login
@@ -44,7 +43,7 @@ export const LoginModal = (props) => {
             fullWidth
             variant="outlined"
             onChange={e => setEmail(e.target.value)}
-            error={emailError != ""}
+            error={emailError !== ""}
             helperText={emailError}
           />
           <TextField
@@ -55,7 +54,7 @@ export const LoginModal = (props) => {
             fullWidth
             variant="outlined"
             onChange={e => setPassword(e.target.value)}
-            error={passwordError != ""}
+            error={passwordError !== ""}
             helperText={passwordError}
           />
         </DialogContent>
