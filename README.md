@@ -8,6 +8,10 @@
 For my development process I always start with laying out an MVP and thinking about what is most critical to the user. For this project I assessed a linear display of sorted events to be the most critical. Without the sorted list of events, users will have a hard time finding the events they want and keeping up to date with what events have already happened and which events are coming up. Pictures, buttons, fancy scrolling, and the rest could come later.
 After determining the set of features that were the absolute minimum, I cut tickets on a Trello board so I could track my progress and time box features/bugs that were taking too long. This had the added benefit of allowing me to record feature ideas and bugs as I was building the MVP and putting them in the TODO column. This way when I was done with the MVP I had a prioritized list of what to do next.
 
+The resulting MVP:
+![out](https://user-images.githubusercontent.com/15067287/154404920-e422a80a-b954-484c-83d6-0acee9d5954b.png)
+
+
 #### How did decide on the tools you've used? 
 
 The tools I used were Typescript, React, and SCSS. I used Material UI as a UI framework which allowed me to have a very consistent feel along with animations that I didn't have to spend hours writing. Typescript ended up being a good technical choice because it allowed me to catch a lot of errors that javascript wouldn't. Since Javascript will fail silently quite often with undefined and allow mismatched types. I actually had a case when I had an incorrect schema in an array once and typescript let me know that I was missing a field, which was really helpful! React was great for the regular reasons: good compartmentalization, code reusability, and state management. It allowed me to iterate quickly and build out a UI and UX with lots of functionality.
