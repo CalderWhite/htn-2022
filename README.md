@@ -85,7 +85,7 @@ I tried my best to write self documentating code with descriptive variable names
 
 #### Are you following best practices to make sure the project is maintainable if development were to continue on it?
 
-I used ESLint to conform to a widely accepted standard with 0 warnings and 0 errors, and I believe this would make the project maintainable in the future if different developers started to work on the codebase. Additionally, I compartmentalized many of the features into components to reduce cognitive load. If you want to change the EventCard, you only need to look at the EventCard. This is a frustration I have had with other codebases, so I kept this in mind when laying out the project.
+I used ESLint to conform to a widely accepted standard with 0 warnings and 0 errors, and I believe this would make the project maintainable in the future if different developers started to work on the codebase. Additionally, I compartmentalized many of the features into components to reduce cognitive load. If you want to change the EventCard, you only need to look at the EventCard. This is a frustration I have had with other codebases, so I kept this in mind when laying out the project. One thing I did not get a change to do is comment some of my functions/components with doxygen so that the props requirements are easily visible. For most of the components they are simple/atomic enough that they do not require much documentation, however for CalendarGrid and EventCard I would certainly add it if given more time.
 
 #### Is your application accessible and responsive (usable on multiple device types and/or for individuals with impairments)?
 
