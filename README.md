@@ -25,14 +25,17 @@ There are a few areas I am particularly proud of. First off, I am proud of the e
 <GIF>
  
 I am also proud of the ability to collapse days and query by event type. I think this takes the project farther from a proof of concept and closer to a functional application that users can garner real value from. This is especially relevant to the Hack the North Gear Up event for example, as the same project can be used for that event and the main hackathon.
- ![htn_collapse](https://user-images.githubusercontent.com/15067287/154403522-afc0ad73-5609-4998-941b-88c2eef9503f.gif)
+ 
+ Collapsing by day:
+![htn_group](https://user-images.githubusercontent.com/15067287/154404632-77a0916c-e87f-46da-ac26-7b89299cece7.gif)
 
-![htn_filter](https://user-images.githubusercontent.com/15067287/154403529-de74059f-cded-4dee-93e2-3151a3f27802.gif)
+Filtering by event type:
+![htn_filter](https://user-images.githubusercontent.com/15067287/154404665-31079439-d679-4ef9-8418-f3973ec6045a.gif)
 
  
 The final thing I am proud of is my login wall for private events. I took inspiration from applications such as private youtube videos or Netflix and tried to implement an intuitive design that communicated to users that they would need to sign in to view those events. This way I can try and minimize user documentation and work off a user's existing knowledge/expectations from other web applications.
  
-![htn_login](https://user-images.githubusercontent.com/15067287/154403830-22d4d8b8-a619-4c45-8ad4-4aed7b27143a.gif)
+![htn_login](https://user-images.githubusercontent.com/15067287/154404453-736fb96a-244e-4598-92eb-7dd167688667.gif)
 
 
 ### 2. Given additional time, how would you extend your application to become a fully functional product that thousands of hackers and the general public would use at Hackathon Global Inc.™'s next event? Would you add more features and performance metrics? If so, what would they be?
