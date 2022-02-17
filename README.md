@@ -7,7 +7,8 @@ To build & view:
 npm install
 npm run build
 
-serve build
+npm install -g serve
+serve -s build
 ```
 
 ### Development
