@@ -29,8 +29,9 @@ npm run start
 For my development process I always start with laying out an MVP (Minimum Viable Product) and thinking about what is most critical to the user. For this project I assessed a linear display of sorted events to be the most critical. Without the sorted list of events, users will have a hard time finding the events they want and keeping up to date with what events have already happened and which events are coming up. Pictures, buttons, fancy scrolling, and the rest could come later.
 After determining the set of features that were the absolute minimum, I cut tickets on a Trello board so I could track my progress and time box features/bugs that were taking too long. This had the added benefit of allowing me to record feature ideas and bugs as I was building the MVP and putting them in the TODO column. This way when I was done with the MVP I had a prioritized list of what to do next.
 
-The kanban board I used to track my tickets:
-![image](https://user-images.githubusercontent.com/15067287/154419824-7262110a-69e8-4664-af99-614ed4e200dc.png)
+The [Trello board](https://trello.com/b/dBJVHX0n/agile-board) I used to track my tickets:
+![image](https://user-images.githubusercontent.com/15067287/154420031-f95c42ff-81ac-4aa4-96bb-bd4c1686108c.png)
+
 
 
 The resulting MVP:
